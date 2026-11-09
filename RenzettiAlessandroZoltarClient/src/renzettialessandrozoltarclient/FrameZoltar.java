@@ -209,8 +209,4 @@ public class FrameZoltar extends javax.swing.JFrame {
     private javax.swing.JLabel lblPersonalita;
     private javax.swing.JLabel lblRisposta;
     // End of variables declaration//GEN-END:variables
-    private Socket socket;
-    private DataInputStream in;
-    private DataOutputStream out;
-
 }
