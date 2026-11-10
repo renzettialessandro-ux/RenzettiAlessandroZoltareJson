@@ -7,7 +7,7 @@ package renzettialessandrozoltar;
 import java.util.List;
 
 /**
- *
+ * Classe che contiene la lista di ripsoste per il file json
  * @author renzetti.alessandro
  */
 public class Risposte {

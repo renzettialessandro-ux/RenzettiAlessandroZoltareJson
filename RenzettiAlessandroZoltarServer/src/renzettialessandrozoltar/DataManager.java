@@ -9,5 +9,6 @@ package renzettialessandrozoltar;
  * @author renzetti.alessandro
  */
 public interface DataManager {
-    
+    public void ser();
+    public void des();
 }

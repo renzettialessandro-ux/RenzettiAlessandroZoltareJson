@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package renzettialessandrozoltar;
 
 import com.google.gson.Gson;
@@ -9,7 +13,7 @@ import java.util.Random;
 /**
  * @author renzetti.alessandro
  */
-public class GestoreDomande {
+public class GestoreDomande implements DataManager {
 
     private Risposte risposte;
     public String tipo = "";
@@ -44,4 +48,16 @@ public class GestoreDomande {
         }
         return "Nessuna risposta disponibile per questa personalità.";
     }
+
+    @Override
+    public void ser() {
+        
+    }
+
+    @Override
+    public void des() {
+        
+    }
+    
+    
 }
