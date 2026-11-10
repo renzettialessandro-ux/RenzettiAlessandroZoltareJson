@@ -5,8 +5,11 @@
 package renzettialessandrozoltar;
 
 import com.google.gson.Gson;
-import java.io.FileReader;
+import com.google.gson.GsonBuilder;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 
@@ -17,16 +20,8 @@ public class GestoreDomande implements DataManager {
 
     private Risposte risposte;
     public String tipo = "";
+    private final String percorso = "Gestore_Risposte.json";
     private final Random random = new Random();
-
-    public GestoreDomande() {
-        try (FileReader reader = new FileReader("Gestore_Risposte.json")) {
-            Gson gson = new Gson();
-            this.risposte = gson.fromJson(reader, Risposte.class);
-        } catch (IOException e) {
-            System.err.println("Errore nel caricamento del file JSON: " + e.getMessage());
-        }
-    }
 
     public String getRisposta(String domanda) {
         List<String> listaScelta;
@@ -51,13 +46,19 @@ public class GestoreDomande implements DataManager {
 
     @Override
     public void ser() {
-        
+        try (FileWriter writer = new FileWriter(percorso)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(this.risposte, writer);
+        } catch (IOException e) {
+            System.err.println("Errore nel salvataggio del file JSON: " + e.getMessage());
+        }
     }
 
     @Override
     public void des() {
-        
+        String json = Files.readString(Paths.get(percorso));
+        Gson gson = new Gson();
+        this.risposte = gson.fromJson(json, Risposte.class);
     }
-    
-    
+
 }
