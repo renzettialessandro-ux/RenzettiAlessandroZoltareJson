@@ -15,8 +15,6 @@ public class RenzettiAlessandroZoltar {
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("Nuova connessione accettata da: " + socket.getRemoteSocketAddress());
-                
-                // Avvia un thread isolato per gestire le domande di questo specifico client
                 new Thread(new ThreadGestoreServer(socket)).start();
             }
 

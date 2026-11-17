@@ -20,7 +20,6 @@ public class RenzettiAlessandroZoltarClient {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ignored) {}
-
         SwingUtilities.invokeLater(() -> new FrameZoltar().setVisible(true));
     }
     

@@ -23,6 +23,10 @@ public class GestoreDomande implements DataManager {
     private final String percorso = "Gestore_Risposte.json";
     private final Random random = new Random();
 
+    public GestoreDomande() {
+        this.des(); 
+    }
+    
     public String getRisposta(String domanda) {
         List<String> listaScelta;
         switch (tipo.toLowerCase()) {
@@ -56,9 +60,13 @@ public class GestoreDomande implements DataManager {
 
     @Override
     public void des() {
-        String json = Files.readString(Paths.get(percorso));
-        Gson gson = new Gson();
-        this.risposte = gson.fromJson(json, Risposte.class);
+        try {
+            String json = Files.readString(Paths.get(percorso));
+            Gson gson = new Gson();
+            this.risposte = gson.fromJson(json, Risposte.class);
+        } catch (IOException e) {
+            System.err.println("Errore nella lettura del file JSON: " + e.getMessage());
+        }
     }
 
 }
